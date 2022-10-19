@@ -1,6 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:profiltemplate/post.dart';
+import 'package:profiltemplate/text_widgets.dart';
+
+import 'about_widget.dart';
+import 'button_widget.dart';
+import 'image_widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +14,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +27,60 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class Profil extends StatelessWidget {
+  List<PostItem> postItems = [
+    PostItem(
+      profilUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Abdou Warissi Boukari",
+      postAt: "5",
+      postUrl: "https://images.pexels.com/photos/176400/pexels-photo-176400.jpeg?cs=srgb&dl=pexels-miro-alt-176400.jpg&fm=jpg",
+      description: "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.",
+      likes: "45",
+      comment: "32",
+    ),
+
+    PostItem(
+      profilUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Abdou Warissi Boukari",
+      postAt: "7",
+      postUrl: "https://images.pexels.com/photos/130879/pexels-photo-130879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.",
+      likes: "15",
+      comment: "2",
+    ),
+
+    PostItem(
+      profilUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Abdou Warissi Boukari",
+      postAt: "17",
+      postUrl: "https://images.pexels.com/photos/247447/pexels-photo-247447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.",
+      likes: "75",
+      comment: "52",
+    ),
+
+    PostItem(
+      profilUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Abdou Warissi Boukari",
+      postAt: "1",
+      postUrl: "https://images.pexels.com/photos/164041/pexels-photo-164041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.",
+      likes: "5",
+      comment: "52",
+    ),
+
+    PostItem(
+      profilUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      name: "Abdou Warissi Boukari",
+      postAt: "1",
+      postUrl: "https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      description: "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.",
+      likes: "0",
+      comment: "1",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -53,7 +111,7 @@ class Profil extends StatelessWidget {
             const Divider(),
             Row(
               children: [
-                simpleText(text: "Mes Posts", fontsize: 15, fontWeight: FontWeight.bold, maxLines: 1)
+                SimpleText(text: "Mes Posts", fontsize: 15, fontWeight: FontWeight.bold, nbrLines: 1)
               ],
             ),
             Container(
@@ -82,7 +140,7 @@ class Profil extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 95),
                   child: profilImage(
                       radius: 55,
-                      url: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                      imageUrl: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                     color: Colors.white,
                   ),
                 ),
@@ -91,13 +149,13 @@ class Profil extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: simpleText(text: "Abdou Warissi Boukari", color: Colors.black, fontsize: 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, maxLines: 1),
+            child: SimpleText(text: "Abdou Warissi Boukari", color: Colors.black, fontsize: 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, nbrLines: 1),
           ),
           Expanded(
             flex: 2,
             child: Padding(
               padding: const EdgeInsets.only(top: 10, right: 5, left: 5),
-              child: simpleText(text: "Tout compte fait, tout ira pour le mieux dans ce monde plein de surprises.", color: Colors.grey, fontsize: 14, fontWeight: FontWeight.normal, fontStyle: FontStyle.italic, maxLines: 2),
+              child: SimpleText(text: "Tout compte fait, tout ira pour le mieux dans ce monde plein de surprises.", color: Colors.grey, fontsize: 14, fontWeight: FontWeight.normal, fontStyle: FontStyle.italic, nbrLines: 2, textAligns: TextAlign.center,),
             ),
           ),
           Expanded(
@@ -106,37 +164,15 @@ class Profil extends StatelessWidget {
               children: [
                 Expanded(child: buttonContainer(
                   size: size,
+                  icon: Icons.add_circle_rounded,
+                  text: "Ajouter à la story",
+                )),
+                Expanded(child: buttonContainer(
+                  size: size,
+                  icon: Icons.edit,
                   text: "Modifier le profil",
                 )),
-                buttonContainer(size: size, icon: Icons.border_color),
-                // Container(
-                //   margin: const EdgeInsets.all(5),
-                //   // height: 40,
-                //   width: size.width/1.27,
-                //   decoration: const BoxDecoration(
-                //     color: Colors.blue,
-                //     borderRadius: BorderRadius.all(Radius.circular(15)),
-                //   ),
-                //   child: Center(
-                //     child: simpleText(text: "Modifier le profil", color: Colors.white, fontsize: 14, fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, maxLines: 1),
-                //   )
-                // ),
-                // const Spacer(),
-                // Container(
-                //     margin: const EdgeInsets.all(5),
-                //     height: 40,
-                //     width: size.width/8.2,
-                //     decoration: const BoxDecoration(
-                //       color: Colors.blue,
-                //       borderRadius: BorderRadius.all(Radius.circular(15)),
-                //     ),
-                //     child: const Center(
-                //       child: Icon(
-                //         Icons.edit,
-                //         color: Colors.white,
-                //       ),
-                //     )
-                // ),
+                buttonContainer(size: size, icon: Icons.keyboard_control),
               ],
             ),
           ),
@@ -151,7 +187,7 @@ class Profil extends StatelessWidget {
         children: [
           Row(
             children: [
-              simpleText(text: "A propos de moi", color: Colors.black, fontsize: 15, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, maxLines: 1),
+              SimpleText(text: "A propos de moi", color: Colors.black, fontsize: 15, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal, nbrLines: 1),
             ],
           ),
           aboutRow(
@@ -160,7 +196,7 @@ class Profil extends StatelessWidget {
           ),
           aboutRow(
               icon: Icons.work,
-              text: "Développeur iOS"
+              text: "Développeur FullStack"
           ),
           aboutRow(
               icon: Icons.favorite,
@@ -196,7 +232,7 @@ class Profil extends StatelessWidget {
           ),
         ),
         Center(
-          child: simpleText(text: name, fontsize: 12, fontWeight: FontWeight.normal, maxLines: 1),
+          child: SimpleText(text: name, fontsize: 12, fontWeight: FontWeight.normal, nbrLines: 1),
         )
       ],
     );
@@ -220,7 +256,7 @@ class Profil extends StatelessWidget {
         children: [
           Row(
             children: [
-              simpleText(text: "Amis", fontsize: 15, fontWeight: FontWeight.bold, maxLines: 1)
+              SimpleText(text: "Amis", fontsize: 15, fontWeight: FontWeight.bold, nbrLines: 1)
             ],
           ),
           Container(
@@ -233,59 +269,7 @@ class Profil extends StatelessWidget {
   }
 
   Column postList(Size size) {
-    List<PostItem> postItems = [];
-    PostItem postItem = PostItem();
     List<Widget> postWidgets =[];
-
-// 1
-    postItem.profilUrl= "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem.name= "Abdou Warissi Boukari";
-    postItem.postAt= "5";
-    postItem.postUrl= "https://images.pexels.com/photos/176400/pexels-photo-176400.jpeg?cs=srgb&dl=pexels-miro-alt-176400.jpg&fm=jpg";
-    postItem.description= "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.";
-    postItem.likes= "45";
-    postItem.comment= "32";
-    postItems.add(postItem);
-// 2
-    PostItem postItem2 = PostItem();
-    postItem2.profilUrl= "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem2.name= "Abdou Warissi Boukari";
-    postItem2.postAt= "7";
-    postItem2.postUrl= "https://images.pexels.com/photos/130879/pexels-photo-130879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem2.description= "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.";
-    postItem2.likes= "15";
-    postItem2.comment= "2";
-    postItems.add(postItem2);
-// 3
-    PostItem postItem3 = PostItem();
-    postItem3.profilUrl= "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem3.name= "Abdou Warissi Boukari";
-    postItem3.postAt= "17";
-    postItem3.postUrl= "https://images.pexels.com/photos/247447/pexels-photo-247447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem3.description= "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.";
-    postItem3.likes= "75";
-    postItem3.comment= "52";
-    postItems.add(postItem3);
-// 4
-    PostItem postItem4 = PostItem();
-    postItem4.profilUrl= "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem4.name= "Abdou Warissi Boukari";
-    postItem4.postAt= "1";
-    postItem4.postUrl= "https://images.pexels.com/photos/164041/pexels-photo-164041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem4.description= "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.";
-    postItem4.likes= "5";
-    postItem4.comment= "52";
-    postItems.add(postItem4);
-    // 5
-    PostItem postItem5 = PostItem();
-    postItem5.profilUrl= "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem5.name= "Abdou Warissi Boukari";
-    postItem5.postAt= "27";
-    postItem5.postUrl= "https://images.pexels.com/photos/1024989/pexels-photo-1024989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-    postItem5.description= "Un coin paradisiaque sur les cotés ouest des îles maldives où il fait vraiment beau vivre. La paix reigne ici.";
-    postItem5.likes= "85";
-    postItem5.comment= "29";
-    postItems.add(postItem5);
 
     postItems.forEach((element) {
       postWidgets.add(profilPost(size: size, postItem: element));
@@ -313,12 +297,12 @@ class Profil extends StatelessWidget {
             children: [
               profilImage(
                   radius: 18,
-                  url: postItem.profilUrl,
+                  imageUrl: postItem.profilUrl,
                 color: Colors.grey.shade300,
               ),
-              simpleText(text: postItem.name, fontsize: 12, fontWeight: FontWeight.normal, maxLines: 1),
+              SimpleText(text: postItem.name, fontsize: 12, fontWeight: FontWeight.normal, nbrLines: 1),
               const Spacer(),
-              simpleText(text: "Il y a ${postItem.postAt} heures", fontsize: 12, fontWeight: FontWeight.normal, maxLines: 1, color: Colors.blue),
+              SimpleText(text: postItem.setTime(), fontsize: 12, fontWeight: FontWeight.normal, nbrLines: 1, color: Colors.blue),
             ],
           ),
           Padding(
@@ -329,7 +313,7 @@ class Profil extends StatelessWidget {
               url: postItem.postUrl,
             ),
           ),
-          simpleText(
+          SimpleText(
             text: postItem.description,
             fontsize: 12,
             fontWeight: FontWeight.normal,
@@ -343,18 +327,18 @@ class Profil extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Icon(Icons.favorite,),
-                simpleText(
-                  text: "${postItem.likes} likes",
+                SimpleText(
+                  text: postItem.setLikes(),
                   fontsize: 12,
                   fontWeight: FontWeight.normal,
-                  maxLines: 1,
+                  nbrLines: 1,
                 ),
                 const Icon(Icons.comment,),
-                simpleText(
-                  text: "${postItem.comment} Commentaires",
+                SimpleText(
+                  text: postItem.setComments(),
                   fontsize: 12,
                   fontWeight: FontWeight.normal,
-                  maxLines: 1,
+                  nbrLines: 1,
                 ),
               ],
             ),
@@ -365,61 +349,22 @@ class Profil extends StatelessWidget {
   }
 
   // Widget section
-  Widget aboutRow({
-    required IconData icon,
-    required String text}){
-    return Row(
-      children: [
-        Icon(
-          icon,
-          color: Colors.black,
-        ),
-        simpleText(
-            text: text,
-            color: Colors.black,
-            fontsize: 12,
-            fontWeight: FontWeight.normal,
-            fontStyle: FontStyle.normal,
-            maxLines: 1
-        ),
-      ],
-    );
-  }
 
-  Container buttonContainer({required Size size, IconData? icon, String? text}){
-    return Container(
-        margin: const EdgeInsets.only(left: 10, right: 10),
-        padding: const EdgeInsets.all(15),
-        height: 50,
-        // width: size.width/1.27,
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: (icon == null)
-          ? Center(
-              child: simpleText(text: text ?? "", color: Colors.white, fontsize: 14, fontWeight: FontWeight.normal, fontStyle: FontStyle.normal, maxLines: 1),
-        )
-            : Center(
-                child: Icon(icon, color: Colors.white,),),
-    );
-  }
-
-  CircleAvatar profilImage({
-    required double radius,
-    required String url,
-    Color? color,
-  }){
-    return CircleAvatar(
-      backgroundColor: color?? Colors.white,
-      // foregroundImage: NetworkImage(url),
-      radius: radius,
-      child: CircleAvatar(
-        foregroundImage: NetworkImage(url),
-        radius: radius-2,
-      ),
-    );
-  }
+  // CircleAvatar profilImage({
+  //   required double radius,
+  //   required String url,
+  //   Color? color,
+  // }){
+  //   return CircleAvatar(
+  //     backgroundColor: color?? Colors.white,
+  //     // foregroundImage: NetworkImage(url),
+  //     radius: radius,
+  //     child: CircleAvatar(
+  //       foregroundImage: NetworkImage(url),
+  //       radius: radius-2,
+  //     ),
+  //   );
+  // }
 
   Image fromNetwork({double? height, required double width, required String url}){
     return Image.network(
@@ -429,36 +374,4 @@ class Profil extends StatelessWidget {
       fit: BoxFit.cover,
     );
   }
-
-  Text simpleText({
-    required String text,
-    Color? color,
-    required double? fontsize,
-    required FontWeight fontWeight,
-    FontStyle? fontStyle,
-    int? maxLines,
-    TextAlign? textAlign,
-  }){
-    return Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontSize: fontsize,
-        fontWeight: fontWeight,
-        fontStyle: fontStyle,
-      ),
-      textAlign: textAlign?? TextAlign.center,
-      maxLines: maxLines,
-    );
-  }
-}
-
-class PostItem {
-  late String profilUrl;
-  late String name;
-  late String postAt;
-  late String postUrl;
-  late String description;
-  late String likes;
-  late String comment;
 }
